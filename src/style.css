@@ -1,0 +1,650 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header h1 {
+  margin-right: auto;
+  padding-left: 20px;
+}
+
+#mainNav {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: auto;
+  padding-right: 20px;
+}
+
+#mainNav button {
+  background-color: #555;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+#mainNav button:hover {
+  background-color: #777;
+}
+
+main {
+  padding: 20px;
+}
+
+#loginSection,
+#adminSection,
+#visitorSection {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.login-container button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.month-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.month-card {
+  background-color: #e9ecef;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  width: 150px;
+  cursor: pointer;
+}
+
+.modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  overflow: auto;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 700px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .month-container {
+    justify-content: space-around;
+  }
+
+  .month-card {
+    width: 45%;
+  }
+}
+
+.day-cell {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: darkblue;
+}
+
+#adminSection {
+  display: flex;
+}
+
+#visitorSection {
+  display: flex;
+}
+
+#monthListContainer {
+  width: 200px;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+}
+
+#calendarViewContainer {
+  flex: 1;
+  padding: 10px;
+}
+
+#visitorCalendarViewContainer {
+  flex: 10;
+  padding: 10px;
+  width: 100%;
+}
+
+.month-list-item {
+  padding: 8px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-container {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar-table th,
+.calendar-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  position: relative;
+}
+
+.calendar-table th {
+  background-color: #e0e0e0;
+}
+
+.calendar-table .day-cell {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: darkblue;
+}
+
+.calendar-table .day-cell:hover {
+  background-color: #d0e2ff;
+}
+
+.calendar-table .day-cell.selected {
+  background-color: red;
+  color: white;
+}
+
+.calendar-table .day-cell.today {
+  background-color: yellow;
+  color: black;
+}
+
+.calendar-table .day-cell.today:hover {
+  background-color: #eedc82;
+}
+
+.calendar-table .checked-indicator {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: green;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.checkbox-container {
+  margin-top: 5px;
+}
+
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.admin-login-form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.admin-login-form input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #495057;
+  transition: border-color 0.2s ease;
+}
+
+.admin-login-form input:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.admin-login-form button {
+  padding: 12px 20px;
+  border: none;
+  background-color: #5cb85c;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.admin-login-form button:hover {
+  background-color: #4cae4c;
+}
+
+#dayDetailsContainer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: none;
+}
+
+#visitorDayDetailsContainer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: none;
+}
+
+.vista-visitante-container {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#searchResultsContainer {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.student-record {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.add-student-form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 15px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa;
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+.add-student-form h2 {
+  grid-column: 1 / span 2;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #343a40;
+  font-size: 2rem;
+}
+
+.add-student-form label {
+  font-weight: 500;
+  color: #495057;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.add-student-form input,
+.add-student-form select {
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #495057;
+  transition: border-color 0.2s ease;
+}
+
+.add-student-form input:focus,
+.add-student-form select:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.add-student-form select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23343a40" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 8px 10px;
+}
+
+.add-student-form input[type="file"] {
+  padding: 10px;
+}
+
+.add-student-form .image-preview {
+  width: 148px;
+  height: 168px;
+  margin-top: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+.add-student-form button {
+  grid-column: 1 / span 2;
+  padding: 14px 24px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.add-student-form button:hover {
+  background-color: #0056b3;
+}
+
+.student-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: calc(50% - 10px);
+  box-sizing: border-box;
+  background-color: white;
+}
+
+#studentList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.student-details {
+  display: flex;
+  align-items: center;
+}
+
+.student-image-container {
+  margin-right: 10px;
+}
+
+.student-image {
+  width: 148px;
+  height: 168px;
+  border-radius: 5px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.student-info {
+  flex: 1;
+}
+
+.student-actions {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.student-actions button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.fullscreen-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.fullscreen-image {
+  max-width: 700px;
+  max-height: 800px;
+  object-fit: contain;
+}
+
+.search-modal-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 700px;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+}
+
+.search-modal-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+}
+
+.search-modal-form label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+}
+
+.search-modal-form input[type="text"] {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.search-modal-form input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.search-modal-form #searchResults {
+  margin-top: 20px;
+}
+
+.search-modal-form .student-record {
+  border: 1px solid #eee;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+}
+
+.search-modal-form .student-record p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.search-modal-form .student-record strong {
+  color: #333;
+}
+
+.search-modal-form .delete-student-btn {
+  padding: 10px 15px;
+  border: none;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.search-modal-form .delete-student-btn:hover {
+  background-color: #c82333;
+}
+
+.student-image-search {
+  width: 148px;
+  height: 168px;
+  border-radius: 5px;
+  object-fit: cover;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.student-details-search {
+  flex: 1;
+}
+
+.visitor-cookie-wrapper {
+  width: 100%;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.visitor-calendar-wrapper {
+  width: 100%;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the month list in visitor mode */
+#visitorMonthListContainer {
+  width: 200px;
+  padding: 10px;
+}
+
+#visitorMonthListContainer .month-list-item {
+  background-color: #e9ecef;
+  color: #495057;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 10px 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  display: block;
+}
+
+#visitorMonthListContainer .month-list-item:hover {
+  background-color: #d0e2ff;
+  color: #212529;
+}
+
+#saveChangesBtn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 12px 24px; /* Increased padding */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; /* Increased font size */
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for depth */
+}
+
+#saveChangesBtn:hover {
+  background-color: #3e8e41; /* Darker green on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+}

@@ -1,0 +1,81 @@
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Gestión Escolar</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" type="module"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Sistema de Gestión Escolar</h1>
+    <nav id="mainNav">
+      <button id="changeUserBtn" style="display:none;">Cambiar Usuario</button>
+      <button id="searchBtn" style="display:none;">Buscar</button>
+      <button id="saveChangesBtn" style="display:none;">Guardar Cambios</button>
+    </nav>
+  </header>
+
+  <main id="mainContent">
+    <section id="loginSection">
+      <h2>Iniciar Sesión</h2>
+      <div class="login-container">
+        <button id="adminLoginBtn">Administrador</button>
+        <button id="visitorLoginBtn">Visitante</button>
+      </div>
+    </section>
+
+    <section id="adminSection" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2>Panel de Administrador</h2>
+        <button id="saveChangesBtn" style="display: block; margin-right: 20px;">Guardar Cambios</button>
+      </div>
+      <div style="display: flex;">
+        <div id="monthListContainer">
+          <!-- Month list will be dynamically added here -->
+        </div>
+        <div id="calendarViewContainer">
+          <!-- Calendar view will be dynamically added here -->
+        </div>
+      </div>
+      <div id="dayDetailsContainer">
+        <!-- Day details will be dynamically added here -->
+      </div>
+      <button id="addUserBtn">Crear Usuario</button>
+      <div id="searchResultsContainer">
+        <!-- Search results will be displayed here -->
+      </div>
+    </section>
+
+    <section id="visitorSection" style="display: none;">
+      <div class="vista-visitante-container">
+        <h2>Vista de Visitante</h2>
+        <div id="visitorMonthListContainer">
+          <!-- Month list will be dynamically added here -->
+        </div>
+      </div>
+      <div class="visitor-calendar-wrapper">
+        <div id="visitorCalendarViewContainer">
+          <!-- Calendar view will be dynamically added here -->
+        </div>
+      </div>
+      <div id="visitorDayDetailsContainer">
+        <!-- Day details for visitor will be dynamically added here -->
+      </div>
+    </section>
+  </main>
+
+  <div id="modalContainer" class="modal-container">
+    <div id="modalContent" class="modal-content">
+      <!-- Modal content will be dynamically added here -->
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 CIST LA VICTORIA</p>
+  </footer>
+</body>
+
+</html>
